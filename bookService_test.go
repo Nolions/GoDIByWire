@@ -15,9 +15,15 @@ func init() {
 	}
 }
 
-func TestGetBook(t *testing.T) {
+func TestGetBookByManual(t *testing.T) {
 	db := database.NewDatabase()
 	serv := NewBookService(db)
+
+	assert.Equal(t, book, serv.GetBook())
+}
+
+func TestGetBookByWire(t *testing.T) {
+	serv := InitBookService()
 
 	assert.Equal(t, book, serv.GetBook())
 }
