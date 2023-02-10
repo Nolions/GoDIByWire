@@ -16,7 +16,8 @@ func init() {
 }
 
 func TestGetBook(t *testing.T) {
-	serv := NewBookService()
+	db := database.NewDatabase()
+	serv := NewBookService(db)
 
 	assert.Equal(t, book, serv.GetBook())
 }

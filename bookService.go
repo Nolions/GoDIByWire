@@ -3,13 +3,15 @@ package main
 import "diByWire/database"
 
 type BookService struct {
+	DB database.Database
 }
 
-func NewBookService() BookService {
-	return BookService{}
+func NewBookService(db database.Database) BookService {
+	return BookService{
+		DB: db,
+	}
 }
 
 func (serv *BookService) GetBook() database.Book {
-	db := database.NewDatabase()
-	return db.GetBook()
+	return serv.DB.GetBook()
 }
